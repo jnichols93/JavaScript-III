@@ -15,13 +15,35 @@
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
+function GameObject(charecter){
+  this.createdAt = charecter.createdAt;
+  this.name = charecter.name;
+  this.dimensions = {
+    length: charecter.length,
+    width: charecter.width,
+    height: charecter.height,
+  }
+}
 
+GameObject.prototype.destroy = function(){
+  return `${this.name} Was Removed from the Game}`;
+}
 /*
   === CharacterStats ===
   * healthPoints
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
+function CharacterStats(attributes){
+  this.healthPoints = attributes.healthPoints;
+GameObject.call(this,attributes)
+this.healthPoints = attributes.healthPoints
+}
+CharacterStats.prototype.takeDamage = function (){
+  return  `${this.name} took Damage`;
+};
+GameObject.prototype = Object.create(CharacterStats.prototype);
+
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -32,7 +54,16 @@
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
- 
+ function Humanoid(attributes){
+   this.team = attributes.team;
+   this.weapon = attributes.weapon;
+   this.language = attributes.language;
+   CharacterStats.call(this,)
+  
+ Humanoid.prototype.greet = function(){
+   returns `${this} offers a greeting in ${this.language}`;
+ };
+ CharacterStats.prototype = Object.create(Humanoid.prototype);
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -41,7 +72,7 @@
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -107,4 +138,4 @@
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
-  // * Create two new objects, one a villain and one a hero and fight it out with methods!
+  // * Create two new objects, one a villain and one a hero and fight it out with methods!//
