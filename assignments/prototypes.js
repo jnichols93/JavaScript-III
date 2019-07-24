@@ -137,3 +137,15 @@ CharacterStats.prototype.takeDamage = function (){
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+  function Villain(theBaddy){
+    Humanoid.call(this, theBaddy)
+    this.createdAt = theBaddy.createdAt;
+    this.name = theBaddy.name;
+    this.dimensions = theBaddy.dimensions;
+  }
+    Villain.prototype = Object.create(Humanoid.prototype)
+Villain.prototype.slingShot=function(){
+  return healthPoints-10
+
+}
+  
