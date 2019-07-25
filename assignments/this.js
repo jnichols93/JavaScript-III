@@ -2,10 +2,9 @@
 * in your own words. explain the four principle for the "this" keyword below.
 *
 * 1. window/global binding:
-* 2. 
-* 3. 
-* 4. 
-*
+* 2. Implicit Binding- calls the object preceeding it.
+* 3. New binding- the specific instance of an object created and put out by a constructor function
+* 4. Explicit binding whenever call /apply is used or when (this)is clearly defined
 * write out a code example of each explanation above
 */
 
